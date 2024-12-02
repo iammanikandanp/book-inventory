@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book Form</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f9f9f9;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      /* height: 100vh; */
+    }
+    .form-container {
+      background: #fff;
+      padding: 20px;
+      padding-right: 30px;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      max-width: 400px;
+      margin-top: 50px;
+      margin-bottom: 30px;
+    }
+    .form-container h2 {
+      margin-bottom: 20px;
+      font-size: 24px;
+      text-align: center;
+      color: #333;
+    }
+    .form-group {
+      margin-bottom: 15px;
+    }
+    .form-group label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+      color: #555;
+    }
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      font-size: 14px;
+    }
+    .form-group textarea {
+      resize: none;
+      height: 80px;
+    }
+    .buttons {
+      display: flex;
+      justify-content: space-between;
+    }
+    .buttons button {
+      padding: 10px 15px;
+      font-size: 14px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      color: #fff;
+      flex: 1;
+      margin: 0 5px;
+    }
+    .buttons button.update {
+      background-color: #28a745;
+    }
+    .buttons button.delete {
+      background-color: #dc3545;
+    }
+    .buttons button:hover {
+      opacity: 0.9;
+    }
+  </style>
+</head>
+<body>
+  <div class="form-container">
+    <h2>Book Details</h2>
+    <form id="book-form" action="/addbooks" method="post">
+      <div class="form-group">
+        <label for="book-url">Book Url</label>
+        <input type="text" id="book-url" name="img" placeholder="Enter book url" required>
+      </div>
+      <div class="form-group">
+        <label for="book-name">Book Name</label>
+        <input type="text" id="book-name" name="bookName" placeholder="Enter book name" required>
+      </div>
+      <div class="form-group">
+        <label for="author">Author</label>
+        <input type="text" id="author" name="author" placeholder="Enter author name" required>
+      </div>
+      <div class="form-group">
+        <label for="description">Description</label>
+        <textarea id="description" name="description" placeholder="Enter book description"></textarea>
+      </div>
+      <div class="form-group">
+        <label for="description">Story</label>
+        <textarea id="description" name="story" placeholder="Enter book story"></textarea>
+      </div>
+      <div class="form-group">
+        <label for="rating">Rating</label>
+        <input type="number" id="rating" name="rating" placeholder="Enter rating (1-5)" min="1" max="5" required>
+      </div>
+      <div class="form-group">
+        <label for="price">Price ($)</label>
+        <input type="number" id="price" name="price" placeholder="Enter price" step="0.01" required>
+      </div>
+      <div class="buttons">
+        <button type="submit" class="update">Add Book</button>
+        <button type="reset" style="background-color: rgb(62, 62, 206);">reset</button>
+      </div>
+    </form>
+  </div>
+</body>
+</html>

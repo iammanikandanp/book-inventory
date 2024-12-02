@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        h1 {
+
+            color: #fff;
+
+        }
+
+        h3 {
+            color: rgb(36, 8, 139);
+            padding: 10px;
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+            background-color: skyblue;
+            /* padding: 10px; */
+            border-radius: 10px;
+            margin-top: 0px;
+            padding-left: 20px;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .home-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 30px;
+        }
+
+        .display-book {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .display-book h2 {
+            margin-bottom: 20px;
+            font-size: 22px;
+            color: #333;
+        }
+
+        .book-details {
+            margin-bottom: 20px;
+        }
+
+        .book-details p {
+            margin: 10px 0;
+            font-size: 16px;
+            color: #555;
+        }
+
+        .book-details p span {
+            font-weight: bold;
+            color: #333;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .buttons button {
+            padding: 10px 15px;
+            font-size: 14px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            color: #fff;
+            flex: 1;
+            margin: 0 5px;
+        }
+
+        .buttons button.update {
+            background-color: #28a745;
+        }
+
+        .buttons button.delete {
+            background-color: #dc3545;
+        }
+
+        .buttons button:hover {
+            opacity: 0.9;
+        }
+
+        .book {
+            background: #fff;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .book h3 {
+            margin: 0 0 10px;
+            color: #333;
+        }
+
+        .book p {
+            margin: 5px 0;
+            color: #555;
+        }
+
+       ul{
+        list-style-type: none;
+        display: flex;
+        gap: 20px;
+        justify-content: space-between;
+        align-items: center;
+        margin-right: 30px;
+       }
+       li{
+        font-size: 20px;
+        cursor: pointer;
+       }
+        form {
+            display: flex;
+            /* justify-content: space-between; */
+            width: 100%;
+        }
+
+        .read {
+            padding: 10px 15px;
+            font-size: 14px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            color: #fff;
+            /* flex: 1; */
+            width: 100%;
+            background-color: #28a745;
+            margin: 10px 5px;
+        }
+        .authname{
+            background-color: skyblue;
+            color: black;
+            font-size: 20px;
+            cursor: pointer;
+            padding: 7px 20px;
+            border: none;
+
+        }
+        .authname:hover{
+            border: 0.7px solid white;
+            border-radius: 10px;
+        }
+        .login{
+            background-color: rgb(101, 101, 204);
+            color: #fff;
+            font-size: 20px;
+            cursor: pointer;
+            padding: 7px 20px;
+            border: none;
+            border-radius: 10px;
+
+        }
+        .login:hover{
+            opacity: 0.7;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+
+        <h1>Book Inventory</h1>
+        <ul>
+           <li><button class="authname"><%= authname %></button></li> 
+                <% if(authname==='Guest' ){%>
+                    <li><a href="/signup"><button class="login">Register</button></a></li>
+                    <% }else{ %>
+                    <li><a href="/logout"><button class="login">Logout</button></a></li>
+                        
+                    <% } %>
+
+                    
+        </ul>
+    </div>
+    <div class="home-container">
+        <!-- <h1>Home Page</h1> -->
+        <!-- Display Book Section -->
+        <div class="display-book">
+            <h2>Book Details</h2>
+            <div class="book-details">
+                <% books.forEach((book ,i)=> { %>
+                    <div class="book">
+                        <p readonly hidden>
+                            <%= i %>
+                        </p>
+                        <img src="<%= book.img %>" alt="" width="200px" height="200px">
+                        <h3>
+                            <%= book.bookName %>
+                        </h3>
+                        <p><strong>Author:</strong>
+                            <%= book.author %>
+                        </p>
+                        <p><strong>Description:</strong>
+                            <%= book.description %>
+                        </p>
+                        <p><strong>Rating:</strong>
+                            <%= book.rating %>
+                        </p>
+                        <p><strong>Price:</strong> $<%= book.price %>
+                        </p>
+                        <div class="buttons">
+                            <form action="/read/<%= book._id %>" method="GET" style="display: inline;">
+                                <button class="read">Read</button>
+                            </form>
+                        </div>
+
+                    </div>
+                    <% }) %>
+
+            </div>
+
+            <!-- Another Book Example -->
+
+        </div>
+</body>
+
+</html>
